@@ -1,39 +1,61 @@
-Django Realtime Chat
+# Django Gerçek Zamanlı Sohbet Uygulaması
 
-Bu proje, Django ve Django Channels kullanılarak geliştirilmiş basit bir gerçek zamanlı sohbet uygulamasıdır. WebSocket altyapısı sayesinde kullanıcılar mesajları anlık olarak alıp gönderebilir.
+<p align="center">
+  <img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white" />
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/WebSocket-010101?style=for-the-badge&logo=socketdotio&logoColor=white" />
+  <img src="https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white" />
+</p>
 
-Özellikler
+---
 
-Gerçek zamanlı mesajlaşma
+## Genel Bakış
 
-WebSocket desteği (Django Channels)
+Django ve Django Channels kullanılarak geliştirilmiş **gerçek zamanlı sohbet uygulaması**. WebSocket altyapısı sayesinde kullanıcılar mesajları anlık olarak alıp gönderebilir. Oda bazlı sohbet ve kullanıcı kimlik doğrulama sistemi içerir.
 
-Basit ve anlaşılır arayüz
+---
 
-Django tabanlı yapı
+## Teknoloji Yığını
 
-Gereksinimler
+```
+Backend    → Python · Django
+WebSocket  → Django Channels
+Önbellek   → Redis (channel layer)
+Auth       → Django Authentication
+```
 
-Python 3.8+
+---
 
-Django
+## Mimari
 
-Django Channels
+```
+a_core/          # Django proje ayarları
+a_home/          # Ana sayfa ve oda listesi
+a_rtchat/        # WebSocket consumer ve sohbet mantığı
+a_users/         # Kullanıcı kayıt ve profil
+templates/       # HTML şablonları
+static/          # CSS, JS
+```
 
-Kurulum
-git clone https://github.com/mbeksz/djnago-realtime-chat.git
+---
+
+## Kurulum
+
+```bash
+git clone https://github.com/mbeksz/djnago-realtime-chat
 cd djnago-realtime-chat
-python -m venv venv
-source venv/bin/activate   # Windows: venv\Scripts\activate
 pip install -r requirements.txt
-
-Çalıştırma
 python manage.py migrate
 python manage.py runserver
+```
 
+Tarayıcıdan `http://127.0.0.1:8000/` adresine giderek uygulamayı kullanabilirsiniz.
 
-Tarayıcıdan http://127.0.0.1:8000/ adresine giderek uygulamayı kullanabilirsiniz.
+---
 
-Proje Amacı
+## Özellikler
 
-Django ile WebSocket mantığını ve gerçek zamanlı iletişimi öğrenmek için örnek bir projedir.
+- WebSocket ile anlık iki yönlü mesajlaşma
+- Oda bazlı sohbet desteği
+- Kullanıcı kayıt ve kimlik doğrulama
+- Django Channels ile ASGI mimarisi
